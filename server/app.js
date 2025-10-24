@@ -14,11 +14,12 @@ app.get("/", (req, res) => {
 });
 
 app.get("/trips", (req, res) => {
-  let keywords = req.query.keywords;
+  let keywords = req.query.keywords || "";
 
-  if (keywords === undefined) {
-    return res.status(400).json({
-      message: "Please send keywords parameter in the URL endpoint",
+  // If no keywords provided, return all trips
+  if (!keywords || keywords.trim() === "") {
+    return res.json({
+      data: trips,
     });
   }
 
