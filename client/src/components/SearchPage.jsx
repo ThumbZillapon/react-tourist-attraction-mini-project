@@ -13,8 +13,8 @@ function SearchPage (){
 	const getData = async () => {
 		setIsLoading(true);
 		setError(null);
-		try {
-			const result = await axios.get(`http://localhost:4001/trips?keywords=${text}`);
+    try {
+            const result = await axios.get(`/api/trips?keywords=${text}`);
 			setList(result.data.data);
 		} catch (err) {
 			setList([]);
